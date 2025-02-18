@@ -5,7 +5,7 @@ const instructionText = document.getElementById('instruction-text');
 let direction = 'right'; // current snake movement direction
 let directionQueue = []; // queue to buffer user direction inputs
 let gameInterval; // reference to the game loop interval
-let gameSpeedDelay = 200; // delay in ms between moves (lower means faster)
+let gameSpeedDelay = 150; // delay in ms between moves (lower means faster)
 let gameStarted = false; // flag to indicate if the game is running
 let snake = []; // array holding snake segments (each with x,y coordinates)
 let food; // current food position on the grid
@@ -110,6 +110,7 @@ function startGame() {
   gameStarted = true;
   instructionText.style.display = 'none'; // hide instructions once game starts
   directionQueue = [];
+  
   gameInterval = setInterval(() => {
     move();
     checkCollision();
@@ -157,9 +158,9 @@ document.addEventListener('keydown', handleKeyPress);
 
 function increaseSpeed() {
   // gradually reduce the delay to increase game speed, with different steps
-  if (gameSpeedDelay > 150) {
+  if (gameSpeedDelay > 100) {
     gameSpeedDelay -= 5;
-  } else if (gameSpeedDelay > 100) {
+  } else if (gameSpeedDelay > 75) {
     gameSpeedDelay -= 3;
   } else if (gameSpeedDelay > 50) {
     gameSpeedDelay -= 2;
