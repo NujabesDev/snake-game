@@ -145,7 +145,7 @@ function handleKeyPress(event) {
   }
 
   // get the effective current direction (from queue if available)
-  const currentEffectiveDirection = directionQueue.length ? directionQueue[directionQueue.length - 1] : direction;
+  const currentEffectiveDirection = directionQueue.length ? directionQueue[0] : direction;
   const opposites = { up: 'down', down: 'up', left: 'right', right: 'left' };
 
   // only enqueue the new direction if it isn't directly opposite the current one
@@ -213,7 +213,7 @@ function resetGame() {
   snake = [{ x: startX, y: startY }]; // start snake at center of grid
   food = generateFood(); // place the first food item
   direction = 'right'; // reset direction
-  gameSpeedDelay = 200; // reset speed delay
+  gameSpeedDelay = 150; // reset speed delay
   directionQueue = []; // clear any queued directions
 }
 
